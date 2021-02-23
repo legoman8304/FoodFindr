@@ -1,5 +1,5 @@
 function getWeather(a){
-  const proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/', //Anti cors proxy to eliminate cors errors on api calls.
         targetUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/' + 'json' + '?' + config.MY_KEY + '&' + ''
   const requestURL = proxyUrl + targetUrl
   const request = new XMLHttpRequest();
