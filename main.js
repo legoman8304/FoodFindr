@@ -14,7 +14,7 @@
 }
 a();
 
-Old method of fetching api, switching to jquery.
+Old method of fetching api, switched to jquery.
 
 */ 
 $.ajax({
@@ -31,6 +31,6 @@ $.ajax({
       document.getElementById("log").innerHTML = result;
   },
   error: function () {
-      console.log("error");
+      console.log("error on ajax request");
   }
 });
