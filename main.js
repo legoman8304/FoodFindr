@@ -17,8 +17,10 @@ a();
 Old method of fetching api, switched to jquery.
 
 */ 
+console.debug('https://cors-anywhere.herokuapp.com/'+'https://maps.googleapis.com/maps/api/place/findplacefromtext/' + 'json' + '?' + MY_KEY + '&' + 'food' + '&' + 'textquery')
+console.debug("start");
 $.ajax({
-  url: 'https://maps.googleapis.com/maps/api/place/findplacefromtext/' + 'json' + '?' + MY_KEY + '&' + 'food' + '&' + 'textquery',
+  url: 'https://cors-anywhere.herokuapp.com/'+'https://maps.googleapis.com/maps/api/place/findplacefromtext/' + 'json' + '?' + MY_KEY + '&' + 'food' + '&' + 'textquery',
   headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
   },
@@ -27,6 +29,7 @@ $.ajax({
   data: {
   },
   success: function (result) {
+      console.debug("success");
       console.log(result);
       document.getElementById("log").innerHTML = result;
   },
@@ -34,3 +37,4 @@ $.ajax({
       console.log("error on ajax request");
   }
 });
+console.debug("end")
