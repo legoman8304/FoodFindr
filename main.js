@@ -17,24 +17,20 @@ a();
 Old method of fetching api, switched to jquery.
 
 */ 
-console.debug('https://cors-anywhere.herokuapp.com/'+'https://maps.googleapis.com/maps/api/place/findplacefromtext/' + 'json' + '?' + MY_KEY + '&' + 'food' + '&' + 'textquery')
+
 console.debug("start");
 $.ajax({
-  url: 'https://cors-anywhere.herokuapp.com/'+'https://maps.googleapis.com/maps/api/place/findplacefromtext/' + 'json' + '?' + MY_KEY + '&' + 'food' + '&' + 'textquery',
-  headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-  },
-  type: "GET", /* can use POST, GET, or PUT*/
   dataType: "json",
-  data: {
+  url: "https://api.foursquare.com/v2/venues/search?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v=20180323&near=Parkersburg,WV&radius=100000",
+  data: {},
+  success: function( data ) {
+    console.debug("success")
+    console.log(data);
   },
-  success: function (result) {
-      console.debug("success");
-      console.log(result);
-      document.getElementById("log").innerHTML = result;
-  },
-  error: function () {
-      console.log("error on ajax request");
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.debug(jqXHR);
+    console.debug(textStatus);
+    console.debug(errorThrown);
   }
 });
 console.debug("end")
