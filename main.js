@@ -21,11 +21,16 @@ Old method of fetching api, switched to jquery.
 console.debug("start");
 $.ajax({
   dataType: "json",
-  url: "https://api.foursquare.com/v2/venues/search?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v=20180323&near=Parkersburg,WV&radius=100000",
+  url: "https://api.foursquare.com/v2/venues/search?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v=20180323&near=Parkersburg,WV&radius=100000&categoryId=4d4b7105d754a06374d81259",
   data: {},
   success: function( data ) {
     console.debug("success")
     console.log(data);
+    console.log("used - https://api.foursquare.com/v2/venues/search?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v=20180323&near=Parkersburg,WV&radius=100000&categoryId=4d4b7105d754a06374d81259")
+    //console.log(data.response.venues[0]);
+    for (let index = 0; index < 29; index++) {
+      document.getElementById(index).innerHTML = data.response.venues[index].name + " at " + data.response.venues[index].location.address
+    }
   },
   error: function(jqXHR, textStatus, errorThrown) {
     console.debug(jqXHR);
