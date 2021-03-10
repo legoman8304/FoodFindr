@@ -28,11 +28,19 @@ $.ajax({
     console.log(data);
     console.debug("used - https://api.foursquare.com/v2/venues/search?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v=20180323&near=Parkersburg,WV&radius=100000&categoryId=4d4b7105d754a06374d81259")
     var places = [data.response.venues[0].name, data.response.venues[1].name, data.response.venues[2].name, data.response.venues[3].name, data.response.venues[4].name, data.response.venues[5].name, data.response.venues[6].name, data.response.venues[7].name, data.response.venues[8].name, data.response.venues[9].name, data.response.venues[10].name, data.response.venues[11].name, data.response.venues[12].name, data.response.venues[13].name, data.response.venues[14].name, data.response.venues[15].name, data.response.venues[16].name, data.response.venues[17].name, data.response.venues[18].name, data.response.venues[19].name, data.response.venues[20].name, data.response.venues[21].name, data.response.venues[22].name, data.response.venues[23].name, data.response.venues[24].name, data.response.venues[25].name, data.response.venues[26].name, data.response.venues[27].name, data.response.venues[28].name, data.response.venues[29].name, ];
-    //var places = [data.response.venues[6].name, data.response.venues[10].name, data.response.venues[11].name, data.response.venues[13].name,];
+    /*
+    need to find a way to list ONLY names of venues without doing it that ^ way
+    Heres a start
+    var places1 = data.response.venues.slice(0,30)
+    var places2 = places1.name
+    console.log(places2);
+    */
     var uniquePlaces = [];
-    $.each(places, function(i, el){
-    if($.inArray(el, uniquePlaces) === -1) uniquePlaces.push(el);
-    })
+    for (let index = 0; index < places.length; index++) {
+      $.each(places, function(i, el){
+        if($.inArray(el, uniquePlaces) === -1) uniquePlaces.push(el);
+        })
+    }
     console.log(places);
     console.log(uniquePlaces);
     for (let index = 0; index < 29; index++) {
