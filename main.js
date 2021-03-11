@@ -17,7 +17,6 @@ a();
 Old method of fetching api, switched to jquery.
 
 */ 
-
 console.debug("start");
 $.ajax({
   dataType: "json",
@@ -43,8 +42,8 @@ $.ajax({
     }
     console.log(places);
     console.log(uniquePlaces);
-    for (let index = 0; index < 29; index++) {
-      document.getElementById(index).innerHTML = data.response.venues[index].name + " at " + data.response.venues[index].location.address
+    for (let index = 0; index < uniquePlaces.length; index++) {
+      document.getElementById(index).innerHTML = uniquePlaces[index]
     }
   },
   error: function(jqXHR, textStatus, errorThrown) {
