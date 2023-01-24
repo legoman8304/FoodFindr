@@ -4,7 +4,7 @@ function locationFill() {
     var lng = location.coords.longitude;
     console.debug("Location permission granted");
     console.debug(lat + ", " + lng);
-    let url = "https://api.foursquare.com/v2/venues/search?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20180323&ll=" + lat + "," + lng + "&radius=100000&categoryId=4d4b7105d754a06374d81259"
+    let url = "https://api.foursquare.com/v2/venues/search?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&v=20180323&ll=" + lat + "," + lng + "&radius=16093&categoryId=4d4b7105d754a06374d81259&open_now=true&limit=60"
     $.ajax({
       dataType: "json",
       url: url,
@@ -31,6 +31,8 @@ function locationFill() {
         console.debug(errorThrown);
       }
     });
+    const locationFillButton = document.getElementById("locationFillButton")
+    locationFillButton.remove()
   },
     function (error) {
       console.error("Location permission denied");
