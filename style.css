@@ -2,7 +2,13 @@
   --hoverTime: 0.3s;
 }
 
-button {
+button.venueSelectButton{
+  border: transparent;
+  fill: transparent;
+  background-color: transparent;
+}
+
+.locationFillButton {
   align-items: center;
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -30,18 +36,18 @@ button {
   width: auto;
 }
 
-button:hover,
-button:focus {
+.locationFillButton:hover,
+.locationFillButton:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(0, 0, 0, 0.65);
 }
 
-button:hover {
+.locationFillButton:hover {
   transform: translateY(-1px);
 }
 
-button:active {
+.locationFillButton:active {
   background-color: #F0F0F1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
@@ -246,8 +252,7 @@ body {
   opacity: 0.45;
 }
 
-.round:hover/*, .champion:hover*/
-  {
+.round:hover/*, .champion:hover*/ {
   -moz-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   -o-transform: scale(1.05);
