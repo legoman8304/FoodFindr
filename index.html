@@ -24,7 +24,7 @@
   <section id="bracket">
     <div class="container">
       <div class="split split-one">
-        <div class="round round-one current">
+        <div class="round round-one current" id="R1L">
 
           <ul class="matchup">
             <li class="team team-top" ><button onclick="passWinnerToNextElement(0)" id="0" class="venueSelectButton"></button></li>
@@ -58,9 +58,8 @@
             <li class="team team-top" ><button onclick="passWinnerToNextElement(14)" id="14" class="venueSelectButton"></button></li>
             <li class="team team-bottom" ><button onclick="passWinnerToNextElement(15)" id="15" class="venueSelectButton"></button></li>
           </ul>
-        </div> 
-        <!-- END ROUND ONE -->
-        <div class="round round-two">
+        </div>
+        <div class="round round-two" ID="R2L">
 
           <ul class="matchup">
             <li class="team team-top"><button onclick="test()" id="A0" class="venueSelectButton"></button></li>
@@ -79,8 +78,7 @@
             <li class="team team-bottom"><button onclick="test()" id="A7" class="venueSelectButton"></button></li>
           </ul>
         </div> 
-        <!-- END ROUND TWO -->
-        <div class="round round-three">
+        <div class="round round-three" id="R3L">
           <ul class="matchup">
             <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
             <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
@@ -90,7 +88,6 @@
             <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
           </ul>
         </div> 
-        <!-- END ROUND THREE -->
       </div>
       <div class="champion">
         <button type="button" onclick="locationFill()" class="locationFillButton" id="locationFillButton">Make my FoodFindr bracket!</button>
@@ -117,12 +114,8 @@
           </ul>
         </div>
       </div>
-
-
       <div class="split split-two">
-
-
-        <div class="round round-three">
+        <div class="round round-three" id="R3R">
 
           <ul class="matchup">
             <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
@@ -132,9 +125,8 @@
             <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
             <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
           </ul>
-        </div> <!-- END ROUND THREE -->
-
-        <div class="round round-two">
+        </div>
+        <div class="round round-two" id="R2R">
 
           <ul class="matchup">
             <li class="team team-top"><button onclick="test()" id="A8" class="venueSelectButton"></button></li>
@@ -152,8 +144,8 @@
             <li class="team team-top"><button onclick="test()" id="A14" class="venueSelectButton"></button></li>
             <li class="team team-bottom"><button onclick="test()" id="A15" class="venueSelectButton"></button></li>
           </ul>
-        </div> <!-- END ROUND TWO -->
-        <div class="round round-one current">
+        </div>
+        <div class="round round-one current" id="R1R">
 
           <ul class="matchup">
             <li class="team team-top" ><button onclick="passWinnerToNextElement(16)" id="16" class="venueSelectButton"></button></li>
@@ -187,7 +179,7 @@
             <li class="team team-top" ><button onclick="passWinnerToNextElement(30)" id="30" class="venueSelectButton"></button></li>
             <li class="team team-bottom" ><button onclick="passWinnerToNextElement(31)" id="31" class="venueSelectButton"></button></li>
           </ul>
-        </div> <!-- END ROUND ONE -->
+        </div>
       </div>
     </div>
   </section>

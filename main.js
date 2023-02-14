@@ -7,7 +7,7 @@ function locationFill() {
     const settings = {
       async: true,
       crossDomain: true,
-      url: "https://api.foursquare.com/v3/places/search?ll=" + lat + "," + lng + "&radius=16093&categories=13000&open_now=true&limit=50",
+      url: "https://api.foursquare.com/v3/places/search?ll=" + lat + "," + lng + "&radius=16093&categories=13000&open_now=true&limit=40",
       method: "GET",
       headers: {
         accept: "application/json",
@@ -16,9 +16,9 @@ function locationFill() {
     };
 
     $.ajax(settings).done(function (response) {
-      console.log(response);
+      console.debug(response);
       console.debug("used - " + settings.url)
-      var places = [response.results[0].name, response.results[1].name, response.results[2].name, response.results[3].name, response.results[4].name, response.results[5].name, response.results[6].name, response.results[7].name, response.results[8].name, response.results[9].name, response.results[10].name, response.results[11].name, response.results[12].name, response.results[13].name, response.results[14].name, response.results[15].name, response.results[16].name, response.results[17].name, response.results[18].name, response.results[19].name, response.results[20].name, response.results[21].name, response.results[22].name, response.results[23].name, response.results[24].name, response.results[25].name, response.results[26].name, response.results[27].name, response.results[28].name, response.results[29].name,];
+      var places = [response.results[0].name, response.results[1].name, response.results[2].name, response.results[3].name, response.results[4].name, response.results[5].name, response.results[6].name, response.results[7].name, response.results[8].name, response.results[9].name, response.results[10].name, response.results[11].name, response.results[12].name, response.results[13].name, response.results[14].name, response.results[15].name, response.results[16].name, response.results[17].name, response.results[18].name, response.results[19].name, response.results[20].name, response.results[21].name, response.results[22].name, response.results[23].name, response.results[24].name, response.results[25].name, response.results[26].name, response.results[27].name, response.results[28].name, response.results[29].name, response.results[30].name, response.results[31].name, response.results[32].name,];
       var uniquePlaces = [];
       for (let index = 0; index < places.length; index++) {
         $.each(places, function (i, el) {
@@ -93,20 +93,33 @@ function passWinnerToNextElement(winnerID) {
   } else {
     console.error("ERROR: ID of " + winnerID + " is out of range for pass")
   }
-
+  var bothFilled = []
   if (document.getElementById("A0").innerHTML.trim().length > 0 && document.getElementById("A1").innerHTML.trim().length > 0 && document.getElementById("A2").innerHTML.trim().length > 0 && document.getElementById("A3").innerHTML.trim().length > 0 && document.getElementById("A4").innerHTML.trim().length > 0 && document.getElementById("A5").innerHTML.trim().length > 0 && document.getElementById("A6").innerHTML.trim().length > 0 && document.getElementById("A7").innerHTML.trim().length > 0) {
-    //run when all left side second level brackets have content
-    //use this to delete "current" class from level one, and add it to level two
+    bothFilled.push(1)
   }
   if (document.getElementById("A8").innerHTML.trim().length > 0 && document.getElementById("A9").innerHTML.trim().length > 0 && document.getElementById("A10").innerHTML.trim().length > 0 && document.getElementById("A11").innerHTML.trim().length > 0 && document.getElementById("A12").innerHTML.trim().length > 0 && document.getElementById("A13").innerHTML.trim().length > 0 && document.getElementById("A14").innerHTML.trim().length > 0 && document.getElementById("A15").innerHTML.trim().length > 0) {
-    //run when all right side second level brackets have content
-    //KNOWN BUG: this method only works if the entire right side first level has been filled - which has yet to actually happen
+    bothFilled.push(1)
+  }
+  if (bothFilled[0] == 1 && bothFilled[1] == 1){
+    deleteClass("current");
+    addClass("R2L", "current");
+    addClass("R2R", "current");
+    deleteElement("R1R");
+    deleteElement("R1L");
   }
 }
 function deleteClass(name) {
   const element = document.getElementsByClassName(name);
-  console.debug("Deleted " + element.length + " element classes")
+  console.debug("Deleted " + element.length + " element class(es)")
   for (let i = 0; i < element.length; i + 1) {
     element[i].classList.remove(name);
   }
+}
+function addClass(ID, name) {
+  const element = document.getElementById(ID);
+  element.classList.add(name);
+  console.debug("Added the class \"" + name + "\" to element with ID of \"" + ID + "\"")
+}
+function deleteElement(ID) {
+  document.getElementById(ID).remove();
 }
