@@ -18,15 +18,23 @@ function locationFill() {
     $.ajax(settings).done(function (response) {
       console.debug(response);
       console.debug("used - " + settings.url)
-      var places = [response.results[0].name, response.results[1].name, response.results[2].name, response.results[3].name, response.results[4].name, response.results[5].name, response.results[6].name, response.results[7].name, response.results[8].name, response.results[9].name, response.results[10].name, response.results[11].name, response.results[12].name, response.results[13].name, response.results[14].name, response.results[15].name, response.results[16].name, response.results[17].name, response.results[18].name, response.results[19].name, response.results[20].name, response.results[21].name, response.results[22].name, response.results[23].name, response.results[24].name, response.results[25].name, response.results[26].name, response.results[27].name, response.results[28].name, response.results[29].name, response.results[30].name, response.results[31].name, response.results[32].name,];
+      var places = [];
+      for (let i = 0; i < response.results.length; i++) {
+        places.push(response.results[i].name)
+      }
       var uniquePlaces = [];
       for (let index = 0; index < places.length; index++) {
         $.each(places, function (i, el) {
-          if ($.inArray(el, uniquePlaces) === -1) uniquePlaces.push(el);
+          if ($.inArray(el, uniquePlaces) === -1 && places[i].length <= 30) uniquePlaces.push(el);
         })
       }
       console.debug(places);
       console.debug(uniquePlaces);
+
+      if (uniquePlaces.length < 31) {
+        console.error("Not enough unique venues returned. Only recieved " + uniquePlaces.length + " of 31 needed results")
+      }
+
       for (let index = 0; index < uniquePlaces.length; index++) {
         document.getElementById(index).innerHTML = uniquePlaces[index]
       }
@@ -37,10 +45,7 @@ function locationFill() {
     function (error) {
       console.error("Location permission denied");
     });
-}
-function test() {
-  console.log("test")
-}
+  }
 function passWinnerToNextElement(winnerID) {
   if (winnerID == 0 || winnerID == 1) {
     console.debug("between 0 and 1")
@@ -122,4 +127,7 @@ function addClass(ID, name) {
 }
 function deleteElement(ID) {
   document.getElementById(ID).remove();
+}
+function test() {
+  console.log("test")
 }
